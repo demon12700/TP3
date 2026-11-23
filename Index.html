@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Empanadas</title>
+  <link rel="stylesheet" href="./src/style/style.css">
+  <script src="./src/js/Index.js" defer></script>
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor barra-superior">
+      <div>
+        <h1 class="titulo-principal">Tienda de Empanadas</h1>
+        <p class="subtitulo">Selección rápida, carrito y registro de pedidos</p>
+      </div>
+      <button type="button" id="btn-tema" class="btn btn-tema" aria-pressed="false">
+        Tema: Black UI
+      </button>
+    </div>
+  </header>
+
+  <main class="contenedor layout-principal">
+    <section aria-labelledby="titulo-menu" class="panel">
+      <h2 id="titulo-menu" class="titulo-seccion">Menú</h2>
+      <div class="Menu" id="menu-empanadas"></div>
+    </section>
+
+    <aside aria-labelledby="titulo-compra" class="panel">
+      <h2 id="titulo-compra" class="titulo-seccion">Compra actual</h2>
+      <ul id="lista-compra" class="lista-compra"></ul>
+      <p class="total-compra">Total: <strong id="total-compra">$0</strong></p>
+
+      <form id="form-pedido" class="form-pedido" novalidate>
+        <div class="campo">
+          <label for="cliente-nombre">Nombre del cliente</label>
+          <input type="text" id="cliente-nombre" name="cliente" placeholder="Ej. Martín Gómez">
+        </div>
+        <div class="campo">
+          <label for="cliente-pago">Medio de pago</label>
+          <select id="cliente-pago" name="pago">
+            <option value="">Seleccionar...</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia">Transferencia</option>
+            <option value="Tarjeta">Tarjeta</option>
+          </select>
+        </div>
+        <p id="mensaje-error" class="mensaje-error" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primario">Confirmar compra</button>
+      </form>
+    </aside>
+  </main>
+
+  <section aria-labelledby="titulo-historial" class="contenedor panel historial">
+    <h2 id="titulo-historial" class="titulo-seccion">Compras realizadas</h2>
+    <div id="compras-hechas" class="grid-historial"></div>
+  </section>
+
+  <dialog id="modal-nueva-empanada" class="modal">
+    <h2 class="titulo-seccion">Agregar nueva empanada</h2>
+    <form id="form-nueva-empanada" class="form-pedido" novalidate>
+      <div class="campo">
+        <label for="empanada-nombre">Gusto / Nombre</label>
+        <input type="text" id="empanada-nombre" name="nombre" placeholder="Ej. Humita">
+      </div>
+      <div class="campo">
+        <label for="empanada-precio">Precio unitario ($)</label>
+        <input type="number" id="empanada-precio" name="precio" min="1" placeholder="Ej. 280">
+      </div>
+      <p id="error-empanada" class="mensaje-error" role="alert" hidden></p>
+      <div class="acciones-modal">
+        <button type="button" id="btn-cancelar-empanada" class="btn btn-quitar">Cancelar</button>
+        <button type="submit" class="btn btn-secundario">Añadir al menú</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="modal-confirmacion" class="modal">
+    <h2 class="titulo-seccion">Pedido registrado</h2>
+    <p id="detalle-modal" class="texto-lectura"></p>
+    <div class="acciones-modal">
+      <button type="button" id="btn-cerrar-modal" class="btn btn-primario">Aceptar</button>
+    </div>
+  </dialog>
+</body>
+</html>
